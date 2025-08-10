@@ -1,0 +1,26 @@
+
+
+<div class="list-container">
+  
+    <mat-form-field appearance="fill" style="width: 100% ">
+      <mat-label>Search Character</mat-label>
+      <input matInput [formControl]="searchControl" >
+    </mat-form-field>
+  
+
+  <div class="character-grid">
+    @if (characters().length > 0) {
+      @for (character of characters(); track character.id) {
+        <mat-card class="character-card" [routerLink]="['/character', character.id]">
+        <img  [ngSrc]="character.image" width="300" height="300"  style="object-fit:cover;" [alt]="character.name">
+
+          <mat-card-header>
+            <mat-card-title>{{ character.name }}</mat-card-title>
+          </mat-card-header>
+        </mat-card>
+      }
+    } @else {
+      <p>No characters found.</p>
+    }
+  </div>
+</div>

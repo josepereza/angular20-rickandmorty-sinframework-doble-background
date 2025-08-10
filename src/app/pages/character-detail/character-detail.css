@@ -1,0 +1,88 @@
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes content-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-container {
+  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineamos arriba para ver mejor la animación */
+  min-height: 100vh;
+  padding: 8rem 1rem 2rem; /* Añadimos más padding */
+}
+
+.detail-card {
+  max-width: 450px;
+  width: 100%;
+  background-color: #1e1e1e; /* Un color de fondo ligeramente distinto para destacar */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  /* Aplicamos la animación principal a la tarjeta */
+  animation: card-enter 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+
+  /*
+    Hacemos que los elementos internos empiecen invisibles
+    para que la animación 'content-fade-in' funcione correctamente.
+  */
+  mat-card-header,
+  img,
+  mat-card-content,
+  mat-card-actions {
+    opacity: 0; /* Empiezan invisibles */
+    animation: content-fade-in 1.5s ease-out forwards;
+  }
+
+  /*
+    Aplicamos un retraso escalonado a cada elemento para un efecto de "cascada".
+  */
+  mat-card-header {
+    animation-delay: 0.3s;
+  }
+
+  img {
+    animation-delay: 0.4s;
+  }
+
+  mat-card-content {
+    animation-delay: 0.5s;
+  }
+
+  mat-card-actions {
+    animation-delay: 0.6s;
+  }
+
+  /* Estilos adicionales para mejorar la apariencia */
+  img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  mat-card-title {
+    color: #a5d6a7; /* Un color verde claro para el título */
+    font-size: 1.8rem;
+  }
+
+  mat-card-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}

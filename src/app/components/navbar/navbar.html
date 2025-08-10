@@ -1,0 +1,28 @@
+
+<!-- src/app/components/navbar/navbar.component.html -->
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar-container">
+    <!-- Logo o Nombre de la App -->
+     <div class="logo">
+       <a href="#" class="navbar-logo" #logoLink (click)="closeMenu()">
+      Rick & Morty
+    </a>
+     </div>
+   
+
+    <!-- Botón de Hamburguesa (solo visible en móviles) -->
+    <button class="hamburger-menu" (click)="toggleMenu()" [class.active]="isMenuOpen()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Lista de Enlaces de Navegación -->
+    <ul class="nav-links" [class.expanded]="isMenuOpen()"  >
+      <li><a routerLink="/" (click)="closeMenu()"  [ngClass]="{
+        'inicio-scrolled': isScrolled(), 'inicio-top': !isScrolled()}">Inicio</a></li>
+      <li><a routerLink="/characters" (click)="closeMenu()">Personajes</a></li>
+      <!-- Añade más enlaces aquí si lo necesitas -->
+    </ul>
+  </div>
+</nav>
